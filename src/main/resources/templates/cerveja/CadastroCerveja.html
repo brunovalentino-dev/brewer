@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">
 
 <body>
 	<h1>Thymeleaf configurado com sucesso!</h1>
 </body>
 
 	<form method="POST">
+		<span th:text="${mensagem}"></span>
+		<br>
 		<label for="sku">SKU: </label>
 		<input type="text" id="sku" name="sku">
-		<br>
+		<br><br>
 		<label for="nome">Nome: </label>
 		<input type="text" id="nome" name="nome">
-		<br><br>		
+		<br><br>
+		<label for="descricao">Descrição: </label>
+		<textarea id="descricao" name="descricao"></textarea>
+		<br><br>
 		<input type="submit" value="Salvar">
 	</form>
 
