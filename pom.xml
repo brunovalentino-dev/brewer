@@ -23,6 +23,7 @@
 		<spring-framework.version>4.3.0.RELEASE</spring-framework.version>
 		<javax-servlet.version>3.1.0</javax-servlet.version>
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
 		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
 	</properties>
 	
@@ -64,6 +65,12 @@
 			<artifactId>thymeleaf-spring4</artifactId>
 			<version>${thymeleaf.version}</version>
 			<scope>compile</scope>
+		</dependency>
+				
+		<dependency>
+		    <groupId>nz.net.ultraq.thymeleaf</groupId>
+		    <artifactId>thymeleaf-layout-dialect</artifactId>
+		    <version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 		
 		<dependency>
