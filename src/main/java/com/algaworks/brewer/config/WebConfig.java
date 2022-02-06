@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -26,6 +27,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	private static final String CHARACTER_ENCODING = "UTF-8";
 	private static final String TEMPLATE_RESOLVER_PREFIX = "classpath:/templates/";
 	private static final String TEMPLATE_RESOLVER_SUFFIX = ".html";
+	private static final String TEMPLATE_RESOURCE_LOCATION = "classpath:/static/";
 	
 	private ApplicationContext applicationContext;
 
@@ -62,4 +64,9 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return resolver;
 	}
 
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) { 
+		registry.addResourceHandler("/**").addResourceLocations(TEMPLATE_RESOURCE_LOCATION);
+	}
+	
 }
