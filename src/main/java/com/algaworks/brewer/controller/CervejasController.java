@@ -1,3 +1,4 @@
+
 package com.algaworks.brewer.controller;
 
 import javax.validation.Valid;
@@ -14,6 +15,8 @@ import com.algaworks.brewer.model.Cerveja;
 @Controller
 public class CervejasController {
 
+//	private static final Logger LOG = LoggerFactory.getLogger(CervejasController.class); 
+	
 	@RequestMapping("/cervejas/novo")
 	public String novo(Cerveja cerveja) {				
 		return "cerveja/CadastroCerveja"; 
