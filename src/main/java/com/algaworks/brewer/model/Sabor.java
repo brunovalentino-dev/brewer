@@ -8,7 +8,7 @@ public enum Sabor {
 	FRUTADA("Frutada"),
 	SUAVE("Suave");
 	
-	private String descricao;
+	private final String descricao;
 
 	private Sabor(String descricao) {
 		this.descricao = descricao;
