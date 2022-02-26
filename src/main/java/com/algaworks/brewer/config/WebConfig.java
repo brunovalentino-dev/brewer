@@ -1,5 +1,11 @@
 package com.algaworks.brewer.config;
 
+import static com.algaworks.brewer.config.AppConfigSettings.CHARACTER_ENCODING;
+import static com.algaworks.brewer.config.AppConfigSettings.RESOURCE_HANDLER;
+import static com.algaworks.brewer.config.AppConfigSettings.TEMPLATE_RESOLVER_PREFIX;
+import static com.algaworks.brewer.config.AppConfigSettings.TEMPLATE_RESOLVER_SUFFIX;
+import static com.algaworks.brewer.config.AppConfigSettings.TEMPLATE_RESOURCE_LOCATION;
+
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -26,11 +32,6 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
-	private static final String CHARACTER_ENCODING = "UTF-8";
-	private static final String TEMPLATE_RESOLVER_PREFIX = "classpath:/templates/";
-	private static final String TEMPLATE_RESOLVER_SUFFIX = ".html";
-	private static final String TEMPLATE_RESOURCE_LOCATION = "classpath:/static/";
-	
 	private ApplicationContext applicationContext;
 
 	@Override
@@ -41,8 +42,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	@Bean
 	public ViewResolver viewResolver() {
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(this.templateEngine());
-		resolver.setCharacterEncoding(CHARACTER_ENCODING);
+		resolver.setTemplateEngine(this.templateEngine());		
+		resolver.setCharacterEncoding(CHARACTER_ENCODING.getConfiguracao());
 		
 		return resolver;
 	}
@@ -60,8 +61,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	private ITemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setApplicationContext(applicationContext);
-		resolver.setPrefix(TEMPLATE_RESOLVER_PREFIX);
-		resolver.setSuffix(TEMPLATE_RESOLVER_SUFFIX);
+		resolver.setPrefix(TEMPLATE_RESOLVER_PREFIX.getConfiguracao());
+		resolver.setSuffix(TEMPLATE_RESOLVER_SUFFIX.getConfiguracao());
 		resolver.setTemplateMode(TemplateMode.HTML);
 		
 		return resolver;
@@ -69,7 +70,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) { 
-		registry.addResourceHandler("/**").addResourceLocations(TEMPLATE_RESOURCE_LOCATION);
+		registry.addResourceHandler(RESOURCE_HANDLER.getConfiguracao())
+			.addResourceLocations(TEMPLATE_RESOURCE_LOCATION.getConfiguracao());
 	}
 	
 }

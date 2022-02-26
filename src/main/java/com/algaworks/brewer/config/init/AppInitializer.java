@@ -1,5 +1,7 @@
 package com.algaworks.brewer.config.init;
 
+import static com.algaworks.brewer.config.AppConfigSettings.CHARACTER_ENCODING;
+
 import javax.servlet.Filter;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -8,8 +10,6 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import com.algaworks.brewer.config.WebConfig;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
-	private static final String CHARACTER_ENCODING = "UTF-8";
 	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -29,7 +29,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-		characterEncodingFilter.setEncoding(CHARACTER_ENCODING);
+		characterEncodingFilter.setEncoding(CHARACTER_ENCODING.getConfiguracao());
 		characterEncodingFilter.setForceEncoding(true);
 		
 		return new Filter[] { characterEncodingFilter };
