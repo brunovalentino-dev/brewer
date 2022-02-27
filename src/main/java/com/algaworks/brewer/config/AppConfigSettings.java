@@ -6,7 +6,9 @@ public enum AppConfigSettings {
 	TEMPLATE_RESOLVER_PREFIX("classpath:/templates/"),
 	TEMPLATE_RESOLVER_SUFFIX(".html"),
 	TEMPLATE_RESOURCE_LOCATION("classpath:/static/"),
-	RESOURCE_HANDLER("/**");
+	RESOURCE_HANDLER("/**"),
+	JPA_DATASOURCE("jdbc/brewerDB"),
+	DATABASE_DIALECT("org.hibernate.dialect.MySQL8Dialect");
 	
 	private final String configuracao;
 
