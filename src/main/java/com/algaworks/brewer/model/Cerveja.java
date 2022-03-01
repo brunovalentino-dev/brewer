@@ -32,7 +32,7 @@ public class Cerveja {
 	private String nome;
 		
 	@NotBlank(message = "O campo Descrição é obrigatório!")
-	@Size(max = 5, message = "A descrição de uma cerveja não pode ter mais de 5 caracteres.")
+	@Size(min = 10, max = 50, message = "A descrição de uma cerveja deve ter entre 10 e 50 caracteres.")
 	private String descricao;
 	
 	private BigDecimal valor;
