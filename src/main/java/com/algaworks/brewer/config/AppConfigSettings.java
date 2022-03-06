@@ -8,7 +8,9 @@ public enum AppConfigSettings {
 	TEMPLATE_RESOURCE_LOCATION("classpath:/static/"),
 	RESOURCE_HANDLER("/**"),
 	JPA_DATASOURCE("jdbc/brewerDB"),
-	DATABASE_DIALECT("org.hibernate.dialect.MySQL8Dialect");
+	DATABASE_DIALECT("org.hibernate.dialect.MySQL8Dialect"),
+	BIG_DECIMAL_FORMATTER("#,##0.00"),
+	INTEGER_FORMATTER("#,##0");
 	
 	private final String configuracao;
 
