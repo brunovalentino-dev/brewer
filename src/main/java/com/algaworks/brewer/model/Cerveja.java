@@ -13,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -32,28 +36,39 @@ public class Cerveja {
 	private String sku;
 	
 	@NotBlank(message = "O campo Nome é obrigatório!")
+	@Size(min = 10, max = 50, message = "O nome de uma cerveja deve ter entre 10 e 50 caracteres.")
 	private String nome;
 		
 	@NotBlank(message = "O campo Descrição é obrigatório!")
-	@Size(min = 10, max = 50, message = "A descrição de uma cerveja deve ter entre 10 e 50 caracteres.")
+	@Size(min = 10, max = 150, message = "A descrição de uma cerveja deve ter entre 10 e 150 caracteres.")
 	private String descricao;
 	
+	@NotNull(message = "O campo Valor é obrigatório!")
+	@DecimalMin(value = "0.01", message = "O valor da cerveja deve ser maior que R$0,01.")
+	@DecimalMax(value = "9999999.99", message = "O valor da cerveja deve ser menor que R$9.999.999,99.")
 	private BigDecimal valor;
 	
+	@NotNull(message = "O campo Teor alcóolico é obrigatório!")
+	@DecimalMax(value = "100.0", message = "O teor alcóolico da cerveja deve ser menor que 100.0%.")
 	@Column(name = "teor_alcoolico")
 	private BigDecimal teorAlcoolico;
 	
+	@DecimalMax(value = "100.0", message = "A comissão de venda da cerveja deve ser menor ou igual a 100.0%.")
 	private BigDecimal comissao;
 	
+	@Max(value = 9999, message = "O estoque máximo permitido é de 9999 itens.")
 	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;
 	
+	@NotNull(message = "O campo Origem é obrigatório!")
 	@Enumerated(value = EnumType.STRING)
 	private Origem origem;
 	
+	@NotNull(message = "O campo Sabor é obrigatório!")
 	@Enumerated(value = EnumType.STRING)
 	private Sabor sabor;
 	
+	@NotNull(message = "O campo Estilo é obrigatório!")
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
 	private Estilo estilo;
