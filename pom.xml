@@ -31,6 +31,7 @@
 		<hibernate.version>5.3.1.Final</hibernate.version>	
 		<mysql-connector-java.version>8.0.17</mysql-connector-java.version>	
 		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
+		<jackson-databind.version>2.7.5</jackson-databind.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -141,6 +142,13 @@
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-jpa</artifactId>
 		    <version>${spring-data-jpa.version}</version>
+		</dependency>
+				
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson-databind.version}</version>
+		    <scope>compile</scope>
 		</dependency>
 	</dependencies>
 

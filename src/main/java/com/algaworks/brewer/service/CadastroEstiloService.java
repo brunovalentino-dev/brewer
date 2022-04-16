@@ -18,14 +18,14 @@ public class CadastroEstiloService {
 	private EstilosRepository estilosRepository;
 	
 	@Transactional
-	public void salvar(Estilo estilo) throws EstiloCadastradoException {
+	public Estilo salvar(Estilo estilo) throws EstiloCadastradoException {
 		Optional<Estilo> optionalEstilo = estilosRepository.findByNomeIgnoreCase(estilo.getNome());
 						
 		if (optionalEstilo.isPresent()) {
 			throw new EstiloCadastradoException("Estilo já cadastrado na base de dados!");
 		}		
 		
-		estilosRepository.save(estilo);
+		return estilosRepository.saveAndFlush(estilo);
 	}
 	
 }
